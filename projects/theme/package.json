@@ -1,6 +1,6 @@
 {
   "name": "@angularui/theme",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Modern Theme Management for Angular - A lightweight, feature-rich theme library with automatic dark mode detection, SSR support, and zero configuration required.",
   "keywords": [
     "angular",

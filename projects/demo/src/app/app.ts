@@ -1,4 +1,5 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { ThemeService } from '@angularui/theme';
 
 @Component({
   selector: 'app-root',
@@ -7,5 +8,19 @@ import { Component, signal } from '@angular/core';
   styleUrl: './app.css'
 })
 export class App {
-  protected readonly title = signal('demo');
+  private themeService = inject(ThemeService);
+
+  // Theme signals
+  protected readonly currentTheme = this.themeService.theme;
+  protected readonly resolvedTheme = this.themeService.resolvedTheme;
+  protected readonly systemTheme = this.themeService.systemTheme;
+
+  // Theme methods
+  protected toggleTheme() {
+    this.themeService.toggle();
+  }
+
+  protected setTheme(theme: 'light' | 'dark' | 'system') {
+    this.themeService.setTheme(theme);
+  }
 }

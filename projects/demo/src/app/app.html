@@ -1,1 +1,53 @@
-<h1>Demo</h1>
+<div class="app-container">
+  <!-- Header -->
+  <header class="header">
+    <div class="header-content">
+      <div class="logo">
+        <h1>&#64;angularui/theme</h1>
+        <span class="subtitle">A lightweight, feature-rich theme library with automatic dark mode detection, SSR support, and zero configuration required.</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <div class="container">
+      <!-- Hero Section -->
+      <section class="hero">
+        <!-- Theme Controls -->
+        <div class="theme-controls">
+          <button class="btn btn-theme" (click)="toggleTheme()">Toggle Theme</button>
+          <div class="theme-buttons">
+            <button class="btn btn-sm" (click)="setTheme('light')">Light</button>
+            <button class="btn btn-sm" (click)="setTheme('dark')">Dark</button>
+            <button class="btn btn-sm" (click)="setTheme('system')">System</button>
+          </div>
+        </div>
+
+        <!-- Theme Indicators -->
+        <div class="theme-indicators">
+          <div class="indicator">
+            <span class="indicator-label">Current:</span>
+            <span class="indicator-value">{{ currentTheme() }}</span>
+          </div>
+          <div class="indicator">
+            <span class="indicator-label">Resolved:</span>
+            <span class="indicator-value">{{ resolvedTheme() }}</span>
+          </div>
+          <div class="indicator">
+            <span class="indicator-label">System:</span>
+            <span class="indicator-value">{{ systemTheme() }}</span>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>Made with ❤️ for the Angular community</p>
+      <p>Created by <a href="https://x.com/immohammadjaved" target="_blank">&#64;immohammadjaved</a></p>
+    </div>
+  </footer>
+</div>
