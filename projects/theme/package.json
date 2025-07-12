@@ -42,13 +42,13 @@
     "url": "https://github.com/angularcafe/angularui-theme/issues"
   },
   "homepage": "https://github.com/angularcafe/angularui-theme#readme",
-  "main": "index.js",
+  "main": "fesm2022/angularui-theme.mjs",
   "module": "fesm2022/angularui-theme.mjs",
   "typings": "index.d.ts",
   "exports": {
     ".": {
-      "import": "./index.js",
-      "require": "./index.js",
+      "import": "./fesm2022/angularui-theme.mjs",
+      "require": "./fesm2022/angularui-theme.mjs",
       "types": "./index.d.ts",
       "default": "./fesm2022/angularui-theme.mjs"
     },
@@ -57,7 +57,6 @@
     }
   },
   "files": [
-    "index.js",
     "index.d.ts",
     "fesm2022/",
     "README.md",
