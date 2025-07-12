@@ -1,12 +1,80 @@
 {
-  "name": "theme",
+  "name": "@angularui/theme",
   "version": "0.0.1",
+  "description": "Modern Theme Management for Angular - A lightweight, feature-rich theme library with automatic dark mode detection, SSR support, and zero configuration required.",
+  "keywords": [
+    "angular",
+    "theme",
+    "dark-mode",
+    "light-mode",
+    "angularui-theme",
+    "angularui theme",
+    "angular ui theme",
+    "angular-theme",
+    "angular theme library",
+    "angular dark mode",
+    "angular light mode",
+    "angular theme management",
+    "angular theming",
+    "angular css variables",
+    "angular signals",
+    "angular ssr",
+    "angular universal",
+    "typescript",
+    "ui",
+    "frontend",
+    "css-variables",
+    "theme-switcher",
+    "theme-toggle",
+    "responsive-design"
+  ],
+  "author": {
+    "name": "Mohammad Javed",
+    "email": "mohammadjaved@angularcafe.com",
+    "url": "https://x.com/immohammadjaved"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/angularcafe/angularui-theme.git"
+  },
+  "bugs": {
+    "url": "https://github.com/angularcafe/angularui-theme/issues"
+  },
+  "homepage": "https://github.com/angularcafe/angularui-theme#readme",
+  "main": "index.js",
+  "module": "fesm2022/angularui-theme.mjs",
+  "typings": "index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./index.js",
+      "require": "./index.js",
+      "types": "./index.d.ts",
+      "default": "./fesm2022/angularui-theme.mjs"
+    },
+    "./package.json": {
+      "default": "./package.json"
+    }
+  },
+  "files": [
+    "index.js",
+    "index.d.ts",
+    "fesm2022/",
+    "README.md",
+    "LICENSE"
+  ],
   "peerDependencies": {
-    "@angular/common": "^20.1.0",
-    "@angular/core": "^20.1.0"
+    "@angular/common": "^19.0.0 || ^20.1.0",
+    "@angular/core": "^19.0.0 || ^20.1.0"
   },
   "dependencies": {
     "tslib": "^2.3.0"
   },
-  "sideEffects": false
+  "sideEffects": false,
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
 }
