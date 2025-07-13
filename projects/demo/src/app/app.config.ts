@@ -6,11 +6,7 @@ import { provideUiTheme } from '@angularui/theme';
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideUiTheme({
-      strategy: 'attribute',
-      defaultTheme: 'system',
-      enableColorScheme: true
-    }),
+    provideUiTheme(),
     provideBrowserGlobalErrorListeners(),
     provideZonelessChangeDetection(),
     provideRouter(routes)
