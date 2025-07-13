@@ -208,6 +208,8 @@ The main service that manages theme state using Angular signals.
 - `theme()` - Readonly signal for current theme setting
 - `systemTheme()` - Readonly signal for system theme preference
 - `resolvedTheme()` - Computed signal for the actual applied theme
+- `initialized` - Boolean property indicating if service is initialized
+- `isForced` - Boolean property indicating if forced theme is active
 
 #### Methods
 
@@ -216,8 +218,8 @@ The main service that manages theme state using Angular signals.
 - `isDark()` - Check if current theme is dark
 - `isLight()` - Check if current theme is light
 - `isSystem()` - Check if using system theme
-- `isForced()` - Check if forced theme is active
-- `initialized` - Check if service is initialized
+- `getConfig()` - Get current configuration
+- `cleanup()` - Manual cleanup (automatically called on destroy)
 
 ### Example Usage
 
@@ -250,6 +252,38 @@ import { ThemeService } from '@angularui/theme';
 export class ExampleComponent {
   private themeService = inject(ThemeService);
 }
+```
+
+## 🔄 Lifecycle Management
+
+The ThemeService automatically handles cleanup when the application is destroyed. However, you can also manually manage the lifecycle:
+
+### Manual Cleanup
+
+```typescript
+import { Component, inject, OnDestroy } from '@angular/core';
+import { ThemeService } from '@angularui/theme';
+
+@Component({
+  selector: 'app-example',
+  template: `...`
+})
+export class ExampleComponent implements OnDestroy {
+  private themeService = inject(ThemeService);
+
+  ngOnDestroy() {
+    // Manual cleanup (optional - automatic cleanup is handled)
+    this.themeService.cleanup();
+  }
+}
+```
+
+### Configuration Access
+
+```typescript
+// Get current configuration
+const config = this.themeService.getConfig();
+console.log('Current config:', config);
 ```
 
 ## 🎨 Theming Strategies
@@ -365,8 +399,8 @@ effect(() => {
 
 ## 📦 Bundle Size
 
-- **Core package**: ~3KB (gzipped)
-- **Zero dependencies** - Only Angular core
+- **Core package**: ~13KB (raw) / ~3KB (gzipped)
+- **Zero external dependencies** - Only Angular core and common
 - **Tree-shakeable** - Unused features are removed
 
 ## 🤝 Contributing
