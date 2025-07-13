@@ -1,6 +1,6 @@
 {
   "name": "@angularui/theme",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Modern Theme Management for Angular - A lightweight, feature-rich theme library with automatic dark mode detection, SSR support, and zero configuration required.",
   "keywords": [
     "angular",
@@ -47,9 +47,9 @@
   "typings": "index.d.ts",
   "exports": {
     ".": {
+      "types": "./index.d.ts",
       "import": "./fesm2022/angularui-theme.mjs",
       "require": "./fesm2022/angularui-theme.mjs",
-      "types": "./index.d.ts",
       "default": "./fesm2022/angularui-theme.mjs"
     },
     "./package.json": {
@@ -58,7 +58,7 @@
   },
   "files": [
     "index.d.ts",
-    "fesm2022/",
+    "fesm2022/angularui-theme.mjs",
     "README.md",
     "LICENSE"
   ],
