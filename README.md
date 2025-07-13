@@ -6,6 +6,8 @@
 
 > **Modern Theme Management for Angular** - A lightweight, feature-rich theme library with automatic dark mode detection, SSR support, and zero configuration required.
 
+**🌐 [Live Demo](https://angularcafe.github.io/angularui-theme/)**
+
 ## 🌟 Features
 
 - **🎨 Automatic Theme Detection** - Supports light, dark, and system themes with OS preference detection
