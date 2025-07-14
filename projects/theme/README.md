@@ -4,7 +4,7 @@
 [![Downloads](https://img.shields.io/npm/dm/@angularui/theme.svg)](https://www.npmjs.com/package/@angularui/theme)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-> **Modern Theme Management for Angular** - A lightweight, feature-rich theme library with automatic dark mode detection, SSR support, and zero configuration required.
+Modern Theme Management for Angular - A lightweight, feature-rich theme library with automatic dark mode detection, SSR support, and zero configuration required.
 
 **🌐 [Live Demo](https://angularcafe.github.io/angularui-theme/)**
 
@@ -97,27 +97,24 @@ body {
 }
 ```
 
-## 🎯 Why @angularui/theme?
+### How to Prevent Theme Flash (FOUC) with an Inline Script
+Add this **inline** script to your `index.html` `<head>`:
+```html
+<script>
+(function(){'use strict';try{var t=localStorage.getItem('theme')||'system',e=t==='system'?window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light':t==='light'||t==='dark'?t:'light',n=document.documentElement;if(n){n.classList.remove('light','dark'),e==='dark'?(n.classList.add('dark'),n.setAttribute('data-theme','dark')):(n.classList.remove('dark'),n.removeAttribute('data-theme')),n.style.colorScheme=e}}catch(e){try{var n=document.documentElement;n&&(n.classList.remove('light','dark'),n.removeAttribute('data-theme'),n.style.colorScheme='light')}catch(e){}}})();
+</script>
+```
+**Why inline?** Angular does not provide a way to inject scripts into the HTML `<head>` at build time. For true FOUC prevention, the script must run immediately as the HTML is parsed—before any content is rendered. External scripts or Angular providers/services run too late to prevent a flash. This is why the script must be copied directly into your `index.html` head.
 
-### For Angular Developers
+## Why @angularui/theme?
 
-- **Native Angular Integration** - Built specifically for Angular with signals, dependency injection, and modern patterns
-- **TypeScript First** - Full type safety with comprehensive TypeScript support
-- **Angular 20+ Ready** - Uses latest Angular features like signals and standalone components
-- **Modern DI Pattern** - Uses Angular's inject() function for better performance and tree-shaking
-- **Future-Proof** - Built with Angular's latest patterns and best practices
-- **Enterprise Ready** - Designed for large-scale applications with proper error handling
-- **Clean Architecture** - Uses app initializer for testable, flexible initialization
-
-### Benefits for Angular Ecosystem
-
-- **Consistent Theming** - Standardized approach across Angular applications
-- **Developer Experience** - Excellent IDE support with full autocomplete
-- **Performance** - Leverages Angular's signal system for optimal reactivity
-- **Maintainability** - Clean, well-documented API following Angular conventions
-- **Community** - Contributes to Angular's rich ecosystem of tools
-- **Reduced Bundle Size** - Tree-shakeable and optimized for production
-- **Better Testing** - App initializer pattern enables easier unit testing
+- Native Angular integration: signals, DI, and standalone components
+- TypeScript-first and future-proof (Angular 20+ ready)
+- Clean, testable architecture (app initializer pattern)
+- Consistent, standardized theming across apps
+- Excellent developer experience (autocomplete, IDE support)
+- Performance optimized and tree-shakeable
+- Well-documented, maintainable, and enterprise-ready
 
 ## 🏗️ Modern Architecture
 
@@ -167,33 +164,28 @@ interface ThemeConfig {
 #### Tailwind CSS Integration
 ```typescript
 provideUiTheme({
-  strategy: 'class',
-  defaultTheme: 'system',
-  enableColorScheme: true
+  strategy: 'class'
 })
 ```
 
 #### Custom Storage Key
 ```typescript
 provideUiTheme({
-  storageKey: 'my-app-theme',
-  defaultTheme: 'dark'
+  storageKey: 'my-app-theme'
 })
 ```
 
 #### Disable System Detection
 ```typescript
 provideUiTheme({
-  enableSystem: false,
-  defaultTheme: 'light'
+  enableSystem: false
 })
 ```
 
 #### Forced Theme (for demos)
 ```typescript
 provideUiTheme({
-  forcedTheme: 'dark',
-  enableAutoInit: true
+  forcedTheme: 'dark'
 })
 ```
 
@@ -405,23 +397,14 @@ effect(() => {
 
 ## 🤝 Contributing
 
-We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for details.
+Contributions are welcome! To contribute:
 
-### Development
+1. **Fork** this repository.
+2. **Create a new branch** for your feature or fix.
+3. **Make your changes** and ensure all tests pass.
+4. **Open a Pull Request** with a clear description of your changes.
 
-```bash
-# Clone the repository
-git clone https://github.com/angularcafe/angularui-theme.git
-
-# Install dependencies
-npm install
-
-# Run tests
-npm test
-
-# Build the package
-npm run build
-```
+Please review our [Contributing Guide](CONTRIBUTING.md) before submitting your PR.
 
 ## 📄 License
 
