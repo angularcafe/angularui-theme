@@ -4,7 +4,7 @@
 [![Downloads](https://img.shields.io/npm/dm/@angularui/theme.svg)](https://www.npmjs.com/package/@angularui/theme)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-Modern Theme Management for Angular - A lightweight, feature-rich theme library with automatic dark mode detection, SSR support, and zero configuration required.
+Modern Theme Management for Angular - A lightweight, feature-rich theme library with automatic dark mode detection, SSR-safe, and zero configuration required.
 
 **🌐 [Live Demo](https://angularcafe.github.io/angularui-theme/)**
 
@@ -12,7 +12,7 @@ Modern Theme Management for Angular - A lightweight, feature-rich theme library 
 
 - **🎨 Automatic Theme Detection** - Supports light, dark, and system themes with OS preference detection
 - **⚡ Angular 20 Signals** - Built with modern Angular signals for optimal performance and reactivity
-- **🖥️ SSR Compatible** - Works perfectly with Angular SSR and server-side rendering
+- **🖥️ SSR-safe** - No hydration mismatch, works with Angular SSR out of the box
 - **🎯 Zero Configuration** - Works out of the box with sensible defaults
 - **🔧 Flexible Strategy** - Choose between class-based or attribute-based theming
 - **📦 Tiny Bundle** - Lightweight with no unnecessary dependencies
@@ -105,6 +105,13 @@ Add this **inline** script to your `index.html` `<head>`:
 </script>
 ```
 **Why inline?** Angular does not provide a way to inject scripts into the HTML `<head>` at build time. For true FOUC prevention, the script must run immediately as the HTML is parsed—before any content is rendered. External scripts or Angular providers/services run too late to prevent a flash. This is why the script must be copied directly into your `index.html` head.
+
+**Note:** This approach is SSR-safe: the initial HTML uses the default theme, and the correct theme is applied instantly on page load.
+
+#### FAQ: SSR, LocalStorage, and Theme Flash
+- The SSR HTML always uses the default theme, since user preferences are only available in the browser.
+- The inline script applies the correct theme instantly on page load, so users never see a flash of the wrong theme.
+- This is the standard, SSR-safe approach used by modern theme libraries (like next-themes).
 
 ## Why @angularui/theme?
 
