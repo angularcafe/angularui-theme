@@ -31,6 +31,11 @@ export class ThemeService implements OnDestroy {
   readonly theme = this.themeSignal.asReadonly();
   readonly systemTheme = this.systemThemeSignal.asReadonly();
   readonly resolvedTheme = computed(() => {
+    // During SSR, always return a safe default
+    if (!isPlatformBrowser(this.platformId)) {
+      return 'light';
+    }
+    
     if (this.config.forcedTheme && this.config.forcedTheme !== 'system') {
       return this.config.forcedTheme;
     }
@@ -61,13 +66,13 @@ export class ThemeService implements OnDestroy {
       if (isPlatformBrowser(this.platformId)) {
         this.setupManagers();
         this.loadInitialTheme();
+        this.setupEffects();
       } else {
-        // SSR fallback
+        // SSR fallback - just set default values without DOM access
         this.themeSignal.set(this.config.defaultTheme);
         this.systemThemeSignal.set('light');
       }
 
-      this.setupEffects();
       this.isInitialized = true;
     } catch (error) {
       console.error('Failed to initialize ThemeService:', error);
@@ -179,23 +184,22 @@ export class ThemeService implements OnDestroy {
     }
   }
 
-  // Effects setup
+  // Effects setup - only called in browser environment
   private setupEffects(): void {
+    if (!isPlatformBrowser(this.platformId)) {
+      return;
+    }
     effect(() => {
       const resolvedTheme = this.resolvedTheme();
-      
       if (resolvedTheme !== this.lastAppliedTheme) {
         this.domManager.applyTheme(resolvedTheme, this.config);
         this.lastAppliedTheme = resolvedTheme;
       }
     });
 
-    // Storage effect
     effect(() => {
       const theme = this.themeSignal();
-      if (isPlatformBrowser(this.platformId) && 
-          !this.config.forcedTheme && 
-          !this.isDestroyed) {
+      if (!this.config.forcedTheme && !this.isDestroyed) {
         this.storageManager.saveTheme(this.config, theme);
       }
     });
