@@ -41,6 +41,9 @@ jobs:
     - name: Add 404.html for SPA routing
       run: cp dist/demo/browser/index.html dist/demo/browser/404.html
       
+    - name: Add CNAME for custom domain
+      run: echo 'theme.angularui.org' > dist/demo/browser/CNAME
+
     - name: Setup Pages
       uses: actions/configure-pages@v4
       
@@ -60,4 +63,4 @@ jobs:
     steps:
     - name: Deploy to GitHub Pages
       id: deployment
-      uses: actions/deploy-pages@v4 
+      uses: actions/deploy-pages@v4
