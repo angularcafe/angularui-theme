@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { ThemeService } from 'theme';
+import { ThemeService } from '@slateui/theme';
 
 @Component({
   selector: 'app-root',

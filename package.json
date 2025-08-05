@@ -31,6 +31,7 @@
     "@angular/platform-server": "^20.0.0",
     "@angular/router": "^20.0.0",
     "@angular/ssr": "^20.1.4",
+    "@slateui/theme": "^1.0.0",
     "@tailwindcss/postcss": "^4.1.11",
     "express": "^5.1.0",
     "postcss": "^8.5.6",
