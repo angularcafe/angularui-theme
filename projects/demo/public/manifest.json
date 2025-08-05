@@ -1,0 +1,18 @@
+{
+  "name": "SlateUI Theme - Modern Theme Management for Angular",
+  "short_name": "SlateUI Theme",
+  "description": "A lightweight, feature-rich Angular theme library with automatic dark mode detection, SSR-safe, zero configuration required.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#0f172a",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "32x32",
+      "type": "image/x-icon"
+    }
+  ],
+  "categories": ["developer-tools", "productivity"],
+  "lang": "en"
+}

@@ -2,13 +2,18 @@ import { ApplicationConfig, provideBrowserGlobalErrorListeners, provideZonelessC
 import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
-import { provideUiTheme } from '@angularui/theme';
+import { provideSlateUiTheme } from 'theme';
+import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideUiTheme(),
+    provideSlateUiTheme(
+      {
+        strategy: 'class',
+      }
+    ),
     provideBrowserGlobalErrorListeners(),
     provideZonelessChangeDetection(),
-    provideRouter(routes)
+    provideRouter(routes), provideClientHydration(withEventReplay())
   ]
 };

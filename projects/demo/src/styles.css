@@ -1,4 +1,5 @@
-/* Global styles for the demo application */
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
 
 /* CSS Variables for theming */
 :root {
@@ -10,51 +11,197 @@
   --text-secondary: #475569;
   --text-muted: #64748b;
   --border-color: #e2e8f0;
-  --accent-color: #3b82f6;
-  --accent-hover: #2563eb;
-  --success-color: #10b981;
-  --warning-color: #f59e0b;
-  --error-color: #ef4444;
-  
-  /* Shadows */
-  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-  
-  /* Transitions */
-  --transition: all 0.3s ease;
+  --accent-color: #0f172a;
+  --accent-hover: #374151;
+  --input-bg: #ffffff;
+  --card-bg: #ffffff;
 }
 
 /* Dark theme colors */
-[data-theme="dark"] {
-  --bg-primary: #000000;
+.dark {
+  --bg-primary: #0a0a0a;
   --bg-secondary: #111111;
-  --bg-tertiary: #222222;
-  --text-primary: #ffffff;
+  --bg-tertiary: #1a1a1a;
+  --text-primary: #fafafa;
   --text-secondary: #a1a1aa;
   --text-muted: #71717a;
   --border-color: #27272a;
-  --accent-color: #3b82f6;
-  --accent-hover: #2563eb;
+  --accent-color: #fafafa;
+  --accent-hover: #f4f4f5;
+  --input-bg: #09090b;
+  --card-bg: #09090b;
 }
 
-/* Base styles */
+/* Base styles with performance optimizations */
 * {
   box-sizing: border-box;
 }
 
 html {
-  background-color: var(--bg-primary);
-  color: var(--text-primary);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  font-display: swap;
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
-  margin: 0;
-  padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
   background-color: var(--bg-primary);
   color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  margin: 0;
+  padding: 0;
   line-height: 1.6;
+  font-size: 14px;
+  scroll-behavior: smooth;
+}
+
+/* shadcn/ui style buttons - performance optimized */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: background-color 0.15s ease-in-out, transform 0.15s ease-in-out;
+  background-color: var(--accent-color);
+  color: var(--bg-primary);
+  padding: 0.5rem 1rem;
+  height: 2.25rem;
+  border: none;
+  cursor: pointer;
+  will-change: background-color, transform;
+}
+
+.btn-primary:hover {
+  background-color: var(--accent-hover);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: all 0.15s ease-in-out;
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+  padding: 0.5rem 1rem;
+  height: 2.25rem;
+  cursor: pointer;
+}
+
+.btn-secondary:hover {
+  background-color: var(--bg-tertiary);
+  border-color: var(--text-muted);
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: all 0.15s ease-in-out;
+  border: 1px solid var(--border-color);
+  background-color: transparent;
+  color: var(--text-primary);
+  padding: 0.5rem 1rem;
+  height: 2.25rem;
+  cursor: pointer;
+}
+
+.btn-outline:hover {
+  background-color: var(--bg-secondary);
+}
+
+.btn-lg {
+  height: 2.75rem;
+  padding: 0.5rem 2rem;
+  font-size: 1rem;
+}
+
+/* Custom utility classes for theme-aware styling */
+.theme-bg-primary {
+  background-color: var(--bg-primary);
+}
+
+.theme-bg-secondary {
+  background-color: var(--bg-secondary);
+}
+
+.theme-text-primary {
+  color: var(--text-primary);
+}
+
+.theme-text-secondary {
+  color: var(--text-secondary);
+}
+
+.theme-text-muted {
+  color: var(--text-muted);
+}
+
+.theme-border {
+  border-color: var(--border-color);
+}
+
+.theme-accent {
+  color: var(--accent-color);
+}
+
+/* Header styles */
+.header-blur {
+  backdrop-filter: blur(8px);
+  background-color: rgba(255, 255, 255, 0.8);
+  border-bottom: 1px solid var(--border-color);
+}
+
+[data-theme="dark"] .header-blur {
+  background-color: rgba(10, 10, 10, 0.8);
+}
+
+/* Card styles */
+.card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+}
+
+/* Feature cards with subtle hover effect - optimized for performance */
+.feature-card {
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  will-change: transform, box-shadow;
+  contain: layout;
+}
+
+.feature-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Footer styles */
+.footer-bg {
+  background-color: var(--bg-secondary);
+  border-top: 1px solid var(--border-color);
+}
+
+/* Gradient text - optimized */
+.gradient-text {
+  background: linear-gradient(to right, #3b82f6, #8b5cf6);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  will-change: background;
+  contain: layout style;
 }

@@ -1,12 +1,12 @@
-# @angularui/theme
+# @slateui/theme
 
-[![npm version](https://badge.fury.io/js/%40angularui%2Ftheme.svg)](https://badge.fury.io/js/%40angularui%2Ftheme)
-[![Downloads](https://img.shields.io/npm/dm/@angularui/theme.svg)](https://www.npmjs.com/package/@angularui/theme)
+[![npm version](https://img.shields.io/npm/v/@slateui/theme.svg)](https://www.npmjs.com/package/@slateui/theme)
+[![Downloads](https://img.shields.io/npm/dm/@slateui/theme.svg)](https://www.npmjs.com/package/@slateui/theme)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 Modern Theme Management for Angular - A lightweight, feature-rich theme library with automatic dark mode detection, SSR-safe, and zero configuration required.
 
-**🌐 [Live Demo](https://angularcafe.github.io/angularui-theme/)**
+**🌐 [Live Demo](https://theme.slateui.dev)**
 
 ## 🌟 Features
 
@@ -29,7 +29,7 @@ Modern Theme Management for Angular - A lightweight, feature-rich theme library 
 ### Installation
 
 ```bash
-npm install @angularui/theme
+npm install @slateui/theme
 ```
 
 ### Basic Setup
@@ -38,11 +38,11 @@ Add the theme provider to your `app.config.ts`:
 
 ```typescript
 import { ApplicationConfig } from '@angular/core';
-import { provideUiTheme } from '@angularui/theme';
+import { provideSlateUiTheme } from '@slateui/theme';
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideUiTheme()
+    provideSlateUiTheme()
   ]
 };
 ```
@@ -51,7 +51,7 @@ export const appConfig: ApplicationConfig = {
 
 ```typescript
 import { Component, inject } from '@angular/core';
-import { ThemeService } from '@angularui/theme';
+import { ThemeService } from '@slateui/theme';
 
 @Component({
   selector: 'app-header',
@@ -113,7 +113,7 @@ Add this **inline** script to your `index.html` `<head>`:
 - The inline script applies the correct theme instantly on page load, so users never see a flash of the wrong theme.
 - This is the standard, SSR-safe approach used by modern theme libraries (like next-themes).
 
-## Why @angularui/theme?
+## Why @slateui/theme?
 
 - Native Angular integration: signals, DI, and standalone components
 - TypeScript-first and future-proof (Angular 20+ ready)
@@ -127,7 +127,7 @@ Add this **inline** script to your `index.html` `<head>`:
 
 ### App Initializer Pattern
 
-@angularui/theme uses Angular's `provideAppInitializer()` for clean, testable initialization:
+@slateui/theme uses Angular's `provideAppInitializer()` for clean, testable initialization:
 
 ```typescript
 // Traditional approach (other libraries)
@@ -135,7 +135,7 @@ constructor() {
   this.initialize(); // Side effects in constructor
 }
 
-// @angularui/theme approach
+// @slateui/theme approach
 provideAppInitializer(() => {
   const themeService = inject(ThemeService);
   themeService.initialize(); // Clean, controlled initialization
@@ -170,28 +170,28 @@ interface ThemeConfig {
 
 #### Tailwind CSS Integration
 ```typescript
-provideUiTheme({
+provideSlateUiTheme({
   strategy: 'class'
 })
 ```
 
 #### Custom Storage Key
 ```typescript
-provideUiTheme({
+provideSlateUiTheme({
   storageKey: 'my-app-theme'
 })
 ```
 
 #### Disable System Detection
 ```typescript
-provideUiTheme({
+provideSlateUiTheme({
   enableSystem: false
 })
 ```
 
 #### Forced Theme (for demos)
 ```typescript
-provideUiTheme({
+provideSlateUiTheme({
   forcedTheme: 'dark'
 })
 ```
@@ -224,7 +224,7 @@ The main service that manages theme state using Angular signals.
 
 ```typescript
 import { Component, inject } from '@angular/core';
-import { ThemeService } from '@angularui/theme';
+import { ThemeService } from '@slateui/theme';
 
 @Component({
   selector: 'app-example',
@@ -261,7 +261,7 @@ The ThemeService automatically handles cleanup when the application is destroyed
 
 ```typescript
 import { Component, inject, OnDestroy } from '@angular/core';
-import { ThemeService } from '@angularui/theme';
+import { ThemeService } from '@slateui/theme';
 
 @Component({
   selector: 'app-example',
@@ -290,7 +290,7 @@ console.log('Current config:', config);
 ### Class Strategy (Recommended for Tailwind)
 
 ```typescript
-provideUiTheme({
+provideSlateUiTheme({
   strategy: 'class'
 })
 ```
@@ -313,7 +313,7 @@ provideUiTheme({
 ### Attribute Strategy (CSS Variables)
 
 ```typescript
-provideUiTheme({
+provideSlateUiTheme({
   strategy: 'attribute'
 })
 ```
@@ -347,7 +347,7 @@ The package automatically handles SSR scenarios:
 ### Manual Initialization
 
 ```typescript
-provideUiTheme({
+provideSlateUiTheme({
   enableAutoInit: false
 })
 
@@ -365,7 +365,7 @@ export class AppComponent implements OnInit {
 ### Conditional Initialization
 
 ```typescript
-provideUiTheme({
+provideSlateUiTheme({
   enableAutoInit: false
 })
 
@@ -381,7 +381,7 @@ ngOnInit() {
 
 ```typescript
 import { effect, inject } from '@angular/core';
-import { ThemeService } from '@angularui/theme';
+import { ThemeService } from '@slateui/theme';
 
 // Listen to theme changes
 effect(() => {

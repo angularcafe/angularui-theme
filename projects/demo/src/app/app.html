@@ -1,53 +1,216 @@
-<div class="app-container">
+<div class="min-h-screen flex flex-col theme-bg-primary">
   <!-- Header -->
-  <header class="header">
-    <div class="header-content">
-      <div class="logo">
-        <h1>&#64;angularui/theme</h1>
-        <span class="subtitle">A lightweight, feature-rich theme library with automatic dark mode detection, SSR support, and zero configuration required.</span>
+  <header class="sticky top-0 z-50 theme-bg-primary" role="banner">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <div class="flex items-center space-x-3">
+          <div>
+            <h1 class="text-lg font-semibold theme-text-primary">&#64;slateui/theme</h1>
+            <p class="text-xs theme-text-muted hidden sm:block">Modern Theme Management</p>
+          </div>
+        </div>
+        
+        <nav class="flex items-center space-x-4" role="navigation" aria-label="Main navigation">
+          <a href="https://github.com/angularcafe/slateui-theme" 
+             target="_blank" 
+             rel="noopener noreferrer"
+             class="btn-outline"
+             aria-label="View SlateUI Theme on GitHub">
+            <svg class="w-4 h-4 md:mr-2" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+              <path fill-rule="evenodd" d="M10 0C4.477 0 0 4.484 0 10.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0110 4.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0020 10.017C20 4.484 15.522 0 10 0z" clip-rule="evenodd"/>
+            </svg>
+            <span class="hidden sm:inline">GitHub</span>
+          </a>
+        </nav>
       </div>
     </div>
   </header>
 
   <!-- Main Content -->
-  <main class="main-content">
-    <div class="container">
-      <!-- Hero Section -->
-      <section class="hero">
-        <!-- Theme Controls -->
-        <div class="theme-controls">
-          <button class="btn btn-black" (click)="toggleTheme()">Toggle Theme</button>
-          <div class="theme-buttons">
-            <button class="btn btn-secondary btn-sm" (click)="setTheme('light')">Light</button>
-            <button class="btn btn-secondary btn-sm" (click)="setTheme('dark')">Dark</button>
-            <button class="btn btn-secondary btn-sm" (click)="setTheme('system')">System</button>
+  <main class="flex-1" role="main">
+    <!-- Hero Section -->
+    <section class="relative overflow-hidden pt-16 sm:pt-24" aria-labelledby="hero-title">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center">
+          <h2 id="hero-title" class="text-4xl sm:text-5xl lg:text-6xl font-bold theme-text-primary mb-6 tracking-tight">
+            Modern Theme Management<br/>
+            for <span class="gradient-text">Angular</span>
+          </h2>
+          <p class="text-lg sm:text-xl theme-text-secondary mb-12 max-w-3xl mx-auto leading-relaxed">
+            Lightweight, feature-rich theme library with automatic dark mode detection, 
+            SSR-safe, and zero configuration required.
+          </p>
+
+          <!-- Theme Controls -->
+          <div class="max-w-2xl mx-auto mb-20">
+            <div class="card p-8" role="region" aria-labelledby="theme-controls-title">
+              <h3 id="theme-controls-title" class="text-xl font-semibold theme-text-primary mb-6">Try Theme Switching</h3>
+              
+              <div class="space-y-6">
+                <button 
+                  class="btn-primary btn-lg"
+                  (click)="toggleTheme()"
+                  aria-label="Toggle between light and dark theme">
+                  Toggle Theme
+                </button>
+                
+                <div class="flex flex-wrap justify-center gap-3" role="group" aria-label="Theme selection buttons">
+                  <button 
+                    class="btn-secondary"
+                    (click)="setTheme('light')"
+                    aria-label="Switch to light theme">
+                    <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                      <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"/>
+                    </svg>
+                    Light
+                  </button>
+                  <button 
+                    class="btn-secondary"
+                    (click)="setTheme('dark')"
+                    aria-label="Switch to dark theme">
+                    <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                      <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/>
+                    </svg>
+                    Dark
+                  </button>
+                  <button 
+                    class="btn-secondary"
+                    (click)="setTheme('system')"
+                    aria-label="Use system theme preference">
+                    <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                      <path fill-rule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"/>
+                    </svg>
+                    System
+                  </button>
+                </div>
+              </div>
+
+              <!-- Theme Status -->
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-8">
+                <div class="card p-4">
+                  <div class="text-sm theme-text-muted mb-1">Current</div>
+                  <div class="text-lg font-semibold theme-accent capitalize">{{ currentTheme() }}</div>
+                </div>
+                <div class="card p-4">
+                  <div class="text-sm theme-text-muted mb-1">Resolved</div>
+                  <div class="text-lg font-semibold theme-accent capitalize">{{ resolvedTheme() }}</div>
+                </div>
+                <div class="card p-4">
+                  <div class="text-sm theme-text-muted mb-1">System</div>
+                  <div class="text-lg font-semibold theme-accent capitalize">{{ systemTheme() }}</div>
+                </div>
+              </div>
+            </div>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-20 lg:py-24" aria-labelledby="features-title">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 id="features-title" class="text-3xl sm:text-4xl font-bold theme-text-primary mb-6">Why Choose SlateUI Theme?</h2>
+          <p class="text-lg theme-text-secondary max-w-2xl mx-auto">Built for modern Angular applications with performance and developer experience in mind.</p>
         </div>
 
-        <!-- Theme Indicators -->
-        <div class="theme-indicators">
-          <div class="indicator">
-            <span class="indicator-label">Current:</span>
-            <span class="indicator-value">{{ currentTheme() }}</span>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Feature 1: Angular Signals -->
+          <div class="feature-card rounded-lg p-6 text-center">
+            <div class="w-12 h-12 mx-auto mb-4 rounded-lg bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
+              <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd"/>
+              </svg>
+            </div>
+            <h3 class="text-lg font-semibold theme-text-primary mb-2">Angular 20 Signals</h3>
+            <p class="theme-text-secondary text-sm">Built with modern Angular signals for optimal performance and reactivity.</p>
           </div>
-          <div class="indicator">
-            <span class="indicator-label">Resolved:</span>
-            <span class="indicator-value">{{ resolvedTheme() }}</span>
+
+          <!-- Feature 2: Zero Configuration -->
+          <div class="feature-card rounded-lg p-6 text-center">
+            <div class="w-12 h-12 mx-auto mb-4 rounded-lg bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center">
+              <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+            </div>
+            <h3 class="text-lg font-semibold theme-text-primary mb-2">Zero Configuration</h3>
+            <p class="theme-text-secondary text-sm">Works out of the box with sensible defaults and automatic theme detection.</p>
           </div>
-          <div class="indicator">
-            <span class="indicator-label">System:</span>
-            <span class="indicator-value">{{ systemTheme() }}</span>
+
+          <!-- Feature 3: SSR Safe -->
+          <div class="feature-card rounded-lg p-6 text-center">
+            <div class="w-12 h-12 mx-auto mb-4 rounded-lg bg-gradient-to-br from-orange-500 to-red-600 flex items-center justify-center">
+              <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"/>
+              </svg>
+            </div>
+            <h3 class="text-lg font-semibold theme-text-primary mb-2">SSR Safe</h3>
+            <p class="theme-text-secondary text-sm">No hydration mismatch, works with Angular SSR out of the box.</p>
+          </div>
+
+          <!-- Feature 4: Type Safe -->
+          <div class="feature-card rounded-lg p-6 text-center">
+            <div class="w-12 h-12 mx-auto mb-4 rounded-lg bg-gradient-to-br from-purple-500 to-pink-600 flex items-center justify-center">
+              <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+            </div>
+            <h3 class="text-lg font-semibold theme-text-primary mb-2">Type Safe</h3>
+            <p class="theme-text-secondary text-sm">Full TypeScript support with strict type checking for reliability.</p>
+          </div>
+
+          <!-- Feature 5: Tiny Bundle -->
+          <div class="feature-card rounded-lg p-6 text-center">
+            <div class="w-12 h-12 mx-auto mb-4 rounded-lg bg-gradient-to-br from-teal-500 to-cyan-600 flex items-center justify-center">
+              <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M3 5a2 2 0 012-2h10a2 2 0 012 2v8a2 2 0 01-2 2h-2.22l.123.489.804.804A1 1 0 0113 18H7a1 1 0 01-.707-1.707l.804-.804L7.22 15H5a2 2 0 01-2-2V5zm5.771 7H5V5h10v7H8.771z" clip-rule="evenodd"/>
+              </svg>
+            </div>
+            <h3 class="text-lg font-semibold theme-text-primary mb-2">Tiny Bundle</h3>
+            <p class="theme-text-secondary text-sm">Lightweight with no unnecessary dependencies, tree-shakeable.</p>
+          </div>
+
+          <!-- Feature 6: Production Ready -->
+          <div class="feature-card rounded-lg p-6 text-center">
+            <div class="w-12 h-12 mx-auto mb-4 rounded-lg bg-gradient-to-br from-indigo-500 to-blue-600 flex items-center justify-center">
+              <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+            </div>
+            <h3 class="text-lg font-semibold theme-text-primary mb-2">Production Ready</h3>
+            <p class="theme-text-secondary text-sm">Comprehensive error handling and memory leak prevention.</p>
           </div>
         </div>
-      </section>
-    </div>
+      </div>
+    </section>
   </main>
 
   <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
-      <p>Made with ❤️ for the Angular community</p>
-      <p>Created by <a href="https://x.com/immohammadjaved" target="_blank">&#64;immohammadjaved</a></p>
+  <footer class="footer-bg py-8" role="contentinfo">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center space-y-4">
+        <p class="theme-text-secondary text-sm">Made with ❤️ for the Angular community</p>
+        <nav class="flex justify-center items-center space-x-6 text-sm" role="navigation" aria-label="Footer links">
+          <a href="https://x.com/immohammadjaved" 
+             target="_blank" 
+             rel="noopener noreferrer"
+             class="theme-accent hover:underline transition-colors"
+             aria-label="Follow Mohammad Javed on X (Twitter)">
+            &#64;immohammadjaved
+          </a>
+          <span class="theme-text-muted" aria-hidden="true">•</span>
+          <a href="https://github.com/angularcafe/slateui-theme" 
+             target="_blank" 
+             rel="noopener noreferrer"
+             class="inline-flex items-center space-x-2 theme-accent hover:underline transition-colors"
+             aria-label="View SlateUI Theme source code on GitHub">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+              <path fill-rule="evenodd" d="M10 0C4.477 0 0 4.484 0 10.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0110 4.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0020 10.017C20 4.484 15.522 0 10 0z" clip-rule="evenodd"/>
+            </svg>
+            <span>GitHub</span>
+          </a>
+        </nav>
+      </div>
     </div>
   </footer>
 </div>

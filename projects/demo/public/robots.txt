@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://angularcafe.github.io/slateui-theme/sitemap.xml

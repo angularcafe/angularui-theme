@@ -1,11 +1,10 @@
 import { Component, inject } from '@angular/core';
-import { ThemeService } from '@angularui/theme';
+import { ThemeService } from 'theme';
 
 @Component({
   selector: 'app-root',
   imports: [],
-  templateUrl: './app.html',
-  styleUrl: './app.css'
+  templateUrl: './app.html'
 })
 export class App {
   private themeService = inject(ThemeService);
